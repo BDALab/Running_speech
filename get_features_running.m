@@ -1,7 +1,7 @@
 function out = get_features_running(y, fs, show_progress, fragment_length, F0_min, F0_max)
 
 if nargin < 3 || isempty(show_progress)
-    show_progress = true; % print the info about fragments processed
+    show_progress = false; % print the info about fragments processed
 end
 
 if nargin < 4 || isempty(fragment_length)
@@ -16,9 +16,9 @@ if nargin < 6 || isempty(F0_max)
     F0_max = 400; % maximum F0 for voicing
 end
 
-addpath(genpath([pwd '\praat']))
-addpath(genpath([pwd '\covarep-master']))
-addpath(genpath([pwd '\Troparion-master']))
+addpath(genpath([pwd '\external\' 'Praat']))
+addpath(genpath([pwd '\external\' 'Covarep']))
+addpath(genpath([pwd '\external\' 'Troparion']))
 
 %% ---------------------------- process -------------------------------- %%
 
@@ -146,8 +146,3 @@ out.NAQ = labels_desc{1,3};
 out.QOQ = labels_desc{1,4};
 out.Jitter = labels_desc{1,5};
 out.Shimmer = labels_desc{1,6};
-
-
-
-
-
