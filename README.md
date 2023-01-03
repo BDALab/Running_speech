@@ -6,3 +6,7 @@ Extracting phonatory features from the running speech.
 
 
 * the main function is the file: **get_features_running.m**
+
+---
+
+<sub>Supported by the Quality Internal Grants of BUT (project KInG, reg. no. CZ.02.2.69/0.0/0.0/19\_073/0016948; financed from OP VVV).</sub>
