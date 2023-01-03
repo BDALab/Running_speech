@@ -1,19 +1,46 @@
-function out = get_features_running(y, fs, show_progress, fragment_length, F0_min, F0_max)
+function out = get_features_running(y, fs, ...
+    show_progress, fragment_length, F0_min, F0_max)
+
+% INPUT
+% x ... vector of samples
+% fs ... sampling frequency
+
+% SETUP (optional)
+% show_progress     -> print the info about fragments processed 
+%                      (default = true)
+% fragment_length   -> limit of fragment length to process phonation [s]
+%                      (default = 0.1)
+% F0_min            -> minimum fundamental frequency for voicing
+%                      (default = 75)
+% F0_max            -> maximum fundamental frequency for voicing 
+%                      (default = 400)
+
+
+% OUTPUT
+% out.CPP ... mean value of cepstral peak prominence
+% out.HRF ... mean value of harmonic richness factor
+% out.NAQ ... mean value of normalised amplitude quotient
+% out.QOQ ... mean value of quasi opened quotient
+% out.Jitter ... mean value of five-point Period Perturbation Quotient
+% out.Shimmer ... mean value of five-point Amplitude Perturbation Quotient
+
+
+%% setup
 
 if nargin < 3 || isempty(show_progress)
-    show_progress = false; % print the info about fragments processed
+    show_progress = false;
 end
 
 if nargin < 4 || isempty(fragment_length)
-    fragment_length = 0.1; % limit of fragment length to process phonation [s]
+    fragment_length = 0.1;
 end
 
 if nargin < 5 || isempty(F0_min)
-    F0_min = 75; % minimum F0 for voicing
+    F0_min = 75;
 end
 
 if nargin < 6 || isempty(F0_max)
-    F0_max = 400; % maximum F0 for voicing
+    F0_max = 400;
 end
 
 addpath(genpath([pwd '\external\' 'Praat']))
